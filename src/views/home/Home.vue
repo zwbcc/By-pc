@@ -1,6 +1,7 @@
 <template>
 <div>
     <Category></Category>
+    <div>测试</div>
     <Main :newList="newList" :productList="productList" :projectList="projectList"></Main>
 </div>    
 </template>
