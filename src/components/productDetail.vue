@@ -23,7 +23,7 @@
     <div class="bottom">
       <div class="image">
         <h2>实拍产品</h2>
-          <div v-for="item in pics"  :key="item">
+          <div v-for="item in pics" :key="item.id">
            <img  :src="item" alt="阿三打撒">
           </div>
       </div>
@@ -32,23 +32,9 @@
 </template>
 <script>
 export default {
-  name: "Main",
-  data() {
-    return {
-      pics: []
-    };
-  },
-  methods: {
-    async getDetail() {
-      const res = await this.$http.get("/by/user/produces/getProducesById", {
-        params: { id: 21 }
-      });
-      console.log(res);
-      this.pics = res.data.object.pictures;
-    }
-  },
-  created() {
-    this.getDetail();
+  props: {
+    pics: Array,
+    detailList: Object
   }
 };
 </script>

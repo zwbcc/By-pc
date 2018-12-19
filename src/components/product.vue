@@ -4,7 +4,7 @@
       <div :class="['item',{active: item.id == index}]" v-for="item in typeList" :key="item.id" @click="getItemList(item.id)">{{item.name}}</div>
     </div>
     <div class="bottom">
-      <div class="item" v-for="item in itemList" :key="item.id">
+      <div class="item" v-for="item in itemList" :key="item.id" @click="goDetail(item.id)">
         <img :src="item.picture" alt="">
         <p>{{ item.title }}</p>
       </div>
@@ -15,19 +15,23 @@
 export default {
   data() {
     return{
-      index: '0'
     }
   },
   props: {
     typeList: Array,
-    itemList: Array
+    itemList: Array,
+    index:{
+      type:[String,Number]
+    }
   },
   methods: {
     getItemList(id){
       this.$emit('getItemList',id)
-      this.index = id
+    },
+    goDetail(id){
+      this.$emit('goDetail',id)
     }
-  },
+  }
 }
 </script>
 <style lang="stylus" scoped>

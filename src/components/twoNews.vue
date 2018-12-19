@@ -1,65 +1,63 @@
 <template>
  <div>
     <div class="top">
-      <div class="item active" >医疗库</div>
-      <div class="item">物流冷库</div>
-      <div class="item">食品冷库</div>
-      <div class="item">餐饮冷库</div>
-      <div class="item">科研冷库</div>
-      <div class="item">气调冷库</div>
-      <div class="item">速冻冷库</div>
-      <div class="item">工业冷库</div>
+       <div :class="['item',{active:item.id == index}]" v-for="item in typeList" :key="item.id" @click="getItemList(item)">{{ item.name }}</div>
     </div>
     <div class="bottom">
-      <router-link to="/news/detail" class="item" tag="div">
-        <h2>医疗</h2>
+      <div class="item" v-for="item in itemList" :key="item.id" @click="goDetail(item.id)">
+        <h2>{{ types | transfType }}</h2>
         <div class="text">
           <div class="title">
-            <h3>雅玛多大型物流冷库工程</h3>
+            <h3>{{ item.title }}</h3>
             <img src="../assets/images/arrow.png" alt="">
           </div>
-          <p>工程名称：雅玛多（中国）大型物流工程</p>
-          <p>概况：2009年1月我公司与....</p>
+          <p>工程名称：{{ item.title }}</p>
+          <p v-html="lessContent(item.content)"></p>
         </div>
-      </router-link>
-      <router-link to="/news/detail" class="item" tag="div">
-        <h2>医疗</h2>
-        <div class="text">
-          <div class="title">
-            <h3>雅玛多大型物流冷库工程</h3>
-            <img src="../assets/images/arrow.png" alt="">
-          </div>
-          <p>工程名称：雅玛多（中国）大型物流工程</p>
-          <p>概况：2009年1月我公司与....</p>
-        </div>
-      </router-link>
-      <router-link to="/news/detail" class="item" tag="div">
-        <h2>医疗</h2>
-        <div class="text">
-          <div class="title">
-            <h3>雅玛多大型物流冷库工程</h3>
-            <img src="../assets/images/arrow.png" alt="">
-          </div>
-          <p>工程名称：雅玛多（中国）大型物流工程</p>
-          <p>概况：2009年1月我公司与....</p>
-        </div>
-      </router-link>
-      <router-link to="/news/detail" class="item" tag="div">
-        <h2>医疗</h2>
-        <div class="text">
-          <div class="title">
-            <h3>雅玛多大型物流冷库工程</h3>
-            <img src="../assets/images/arrow.png" alt="">
-          </div>
-          <p>工程名称：雅玛多（中国）大型物流工程</p>
-          <p>概况：2009年1月我公司与....</p>
-        </div>
-      </router-link>
+      </div>
     </div>
+    <div></div>
  </div>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      types:''
+    }
+  },
+  props: {
+    typeList:Array,
+    itemList:Array,
+    index:{
+      type:[ String,Number]
+    }
+  },
+  methods: {
+    getItemList(item){
+      this.types = item.name
+      this.$emit('getItemList',item.id)
+    },
+    // 过滤内容过长
+    lessContent(value) {
+      let content = value.substring(0, 30);
+      return content + "...";
+    },
+    goDetail(id){
+      this.$emit('goDetail',id)
+    }
+  },
+  filters:{
+    transfType:function(value){
+       return value.substring(0,2) 
+    }
+  },
+  watch:{
+    'typeList':function(newData){
+      this.types = newData[0].name
+    }
+  }
+};
 </script>
 <style lang="stylus" scoped>
 .active 
@@ -69,11 +67,10 @@ export default {};
   padding .2rem .3rem
   display flex
   flex-wrap wrap
-  justify-content space-between
   border-bottom 20px solid #eee
   .item
     text-align center
-    margin-top .2rem
+    margin .2rem 2% 0
     line-height .6rem
     font-size 12px
     width 20%

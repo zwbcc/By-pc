@@ -1,13 +1,46 @@
 <template>
-    <div>
-        <news-detail></news-detail>
-    </div>
+  <div>
+    <news-deatail :itemList="itemList" :recList="recList" :typeList="typeList" @goReco="goReco"></news-deatail>
+  </div>
 </template>
 <script>
-import NewsDetail from "../../components/newsDetail";
+import NewsDeatail from "../../components/newsDetail";
 export default {
   components: {
-    NewsDetail
+    NewsDeatail
+  },
+  data() {
+    return {
+      itemList: {},
+      recList: [],
+      id: "",
+      typeList: []
+    };
+  },
+  methods: {
+    async getNewsDetail(id) {
+      const res = await this.$http.get("/by/projects/getProjectsById", {
+        params: { id: id }
+      });
+      if (res.data.code === 0) {
+        this.itemList = res.data.object.new;
+        this.recList = res.data.object.list;
+      }
+    },
+    async getNewsType() {
+      const res = await this.$http.get("/by/user/projects/getProjectsTypeList");
+      if (res.data.code === 0) {
+        this.typeList = res.data.object.list;
+      }
+    },
+    goReco(id) {
+      this.getNewsDetail(id);
+    }
+  },
+  created() {
+    this.id = this.$route.query.id;
+    this.getNewsDetail(this.id);
+    this.getNewsType();
   }
 };
 </script>

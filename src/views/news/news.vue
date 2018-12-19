@@ -62,15 +62,20 @@ export default {
   .top 
     padding .2rem .3rem
     display flex
-    justify-content space-between
-    border-bottom 10px solid #eee
+    flex-wrap wrap
+    border-bottom 20px solid #eee
     .item
       text-align center
+      margin .2rem 2% 0
       line-height .6rem
       font-size 12px
-      width 1.2rem
+      width 20%
       height .6rem
       border 1px solid #00a2e9
+      overflow hidden
+      white-space nowrap
+      -ms-text-overflow: ellipsis
+      text-overflow: ellipsis
   .bottom
     padding .2rem .3rem
     .list 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Product :typeList="typeList" :itemList="itemList" @getItemList="getItemList" ></Product>
+    <Product :typeList="typeList" :itemList="itemList" @getItemList="getItemList" @goDetail="goDetail" :index="index"></Product>
   </div>
 </template>
 <script>
@@ -12,7 +12,8 @@ export default {
   data() {
     return {
       typeList:[],
-      itemList: []
+      itemList: [],
+      index: '0'
     }
   },
   methods: {
@@ -26,6 +27,7 @@ export default {
       }
     },
     async getItemList(id) {
+      this.index = id
       const res = await this.$http.get("/by/user/produces/getProducesList", {
         params: { id: id }
       });
@@ -33,6 +35,9 @@ export default {
         this.itemList = res.data.object.produces
       }
     },
+    goDetail(id){
+      this.$router.push('/product/detail?id='+id)
+    }
   },
   created() {
     this.getTypeList();
