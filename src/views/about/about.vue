@@ -12,29 +12,11 @@
       <h3 class="title">执行团队</h3>
       <p class="en">BINGYU TEAM</p>
       <div class="content">
-        <div class="item">
+        <div class="item" v-for="item in userList" :key="item.id">
           <img src="../../assets/images/team.png" alt="">
-          <h3>冰宇制冷-xxxx</h3>
-          <p>总经理</p>
-          <p>圣诞节去泡温泉怕的撒多线程宁波然后为史莱克的群殴I维护撒拉你到了吗ZN先从撒啊客户倒是那些菜篮子N擦搜ID内存泄漏看着你草i</p>
-        </div>
-        <div class="item">
-          <img src="../../assets/images/team.png" alt="">
-          <h3>冰宇制冷-xxxx</h3>
-          <p>总经理</p>
-          <p>圣诞节去泡温泉怕的撒多线程宁波然后为史莱克的群殴I维护撒拉你到了吗ZN先从撒啊客户倒是那些菜篮子N擦搜ID内存泄漏看着你草i</p>
-        </div>
-        <div class="item">
-          <img src="../../assets/images/team.png" alt="">
-          <h3>冰宇制冷-xxxx</h3>
-          <p>总经理</p>
-          <p>圣诞节去泡温泉怕的撒多线程宁波然后为史莱克的群殴I维护撒拉你到了吗ZN先从撒啊客户倒是那些菜篮子N擦搜ID内存泄漏看着你草i</p>
-        </div>
-        <div class="item">
-          <img src="../../assets/images/team.png" alt="">
-          <h3>冰宇制冷-xxxx</h3>
-          <p>总经理</p>
-          <p>圣诞节去泡温泉怕的撒多线程宁波然后为史莱克的群殴I维护撒拉你到了吗ZN先从撒啊客户倒是那些菜篮子N擦搜ID内存泄漏看着你草i</p>
+          <h3>{{ item.username }}</h3>
+          <p>{{ item.work }}</p>
+          <p v-html="item.introduce"></p>
         </div>
       </div>
     </div>
@@ -107,7 +89,22 @@
 </template>
 <script>
 export default {
-  name: "Main"
+  data() {
+    return {
+      userList: []
+    };
+  },
+  methods: {
+    async getAbout() {
+      const res = await this.$http.get("/by/about");
+      if (res.data.code === 0) {
+        this.userList = res.data.object;
+      }
+    }
+  },
+  created() {
+    this.getAbout();
+  }
 };
 </script>
 <style lang="stylus" scoped>

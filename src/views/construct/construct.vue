@@ -28,15 +28,15 @@ export default {
     },
     async getItemList(id) {
       this.index = id;
-      const res = await this.$http.get("/by/user/news/getNewsList", {
+      const res = await this.$http.get("/by/user/projects/getProjectsList", {
         params: { id: id }
       });
       if (res.data.code === 0) {
-        this.itemList = res.data.object.news;
+        this.itemList = res.data.object.projectsList;
       }
     },
-    goDetail(id){
-      this.$router.push('/construct/detail?id='+id)
+    goDetail(id) {
+      this.$router.push("/construct/detail?id=" + id);
     }
   },
   created() {

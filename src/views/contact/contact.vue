@@ -26,23 +26,23 @@
 export default {
   data() {
     return {
-      large: '',
+      large: "",
       other: []
-    }
+    };
   },
   methods: {
-    async getItemList () {
-      const res = await this.$http.get('/by/user/relation/getRelationList')
-      if(res.data.code === 0) {
-        const data = res.data.object.list
-        this.large = data.splice(0,1)[0]
-        this.other = data
+    async getItemList() {
+      const res = await this.$http.get("/by/user/relation/getRelationList");
+      if (res.data.code === 0) {
+        const data = res.data.object.list;
+        this.large = data.splice(0, 1)[0];
+        this.other = data;
       }
     }
   },
   created() {
-    this.getItemList()
-  } 
+    this.getItemList();
+  }
 };
 </script>
 <style lang="stylus" scoped>

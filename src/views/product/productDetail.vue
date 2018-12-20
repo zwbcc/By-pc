@@ -7,27 +7,29 @@
 import ProductDetail from "../../components/productDetail";
 export default {
   components: {
-    ProductDetail,
+    ProductDetail
   },
   data() {
-      return {
-        detailList: {},
-        pics:[]
-      }
+    return {
+      detailList: {},
+      pics: []
+    };
   },
-    methods: {
-      async getDetail(id){
-        const res = await this.$http.get('/by/user/produces/getProducesById',{params:{id:id}})
-        if(res.data.code === 0) {
-          this.detailList = res.data.object.produces
-          this.pics = res.data.object.pictures
-        }
+  methods: {
+    async getDetail(id) {
+      const res = await this.$http.get("/by/user/produces/getProducesById", {
+        params: { id: id }
+      });
+      if (res.data.code === 0) {
+        this.detailList = res.data.object.produces;
+        this.pics = res.data.object.pictures;
       }
-    },
-    created() {
-      const id = this.$route.query.id
-      this.getDetail(id)
-    },
+    }
+  },
+  created() {
+    const id = this.$route.query.id;
+    this.getDetail(id);
+  }
 };
 </script>
 <style lang="stylus" scoped>

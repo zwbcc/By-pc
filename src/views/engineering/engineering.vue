@@ -18,7 +18,9 @@ export default {
   },
   methods: {
     async getTypeList() {
-      const res = await this.$http.get("/by/user/engineers/getEngineersTypeList");
+      const res = await this.$http.get(
+        "/by/user/engineers/getEngineersTypeList"
+      );
       if (res.data.code === 0) {
         const id = res.data.object.list[0].id;
         this.typeList = res.data.object.list;
@@ -32,11 +34,11 @@ export default {
         params: { id: id }
       });
       if (res.data.code === 0) {
-        this.itemList = res.data.object.news;
+        this.itemList = res.data.object.engineersList;
       }
     },
-    goDetail(id){
-      this.$router.push('/engineering/detail?id='+id)
+    goDetail(id) {
+      this.$router.push("/engineering/detail?id=" + id);
     }
   },
   created() {

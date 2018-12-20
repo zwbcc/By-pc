@@ -19,11 +19,11 @@ export default {
   },
   methods: {
     async getNewsDetail(id) {
-      const res = await this.$http.get("/by/projects/getProjectsById", {
+      const res = await this.$http.get("/by/user/projects/getProjectsById", {
         params: { id: id }
       });
       if (res.data.code === 0) {
-        this.itemList = res.data.object.new;
+        this.itemList = res.data.object.project;
         this.recList = res.data.object.list;
       }
     },

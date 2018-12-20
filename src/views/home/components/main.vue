@@ -4,7 +4,10 @@
       <h3 class="title">关于我们</h3>
       <p class="en">ABOUT US</p>
       <div class="text">
-        <p>阿斯达萨达撒艾维奇翁无群周星驰选择菜单市府大道sad为前提是阿达下自成蹊艾斯萨达抢我阿斯达是</p>
+        <p>福建冰宇制冷设备工程有限公司是集制冷产品设计、产品开发、产品制造、产品销售、工程成套、售后服务、技术咨询为一体的一站式服务公司。</p>
+        <p>公司以生产和定制各种制冷设备，销售及制冷工程主导，专业安装组合式冷冻库、速冻库、冷藏库、保鲜库、实验库、防爆库和超低温（0℃至-120℃）库、工业冷水机组、制冰池、单冻机，速冻隧道、真空预冷...</p>
+        <p>公司产品按照欧洲标准设计，采用先进的制造工艺以及严格的质量控制提醒，确保了产品的高质量、高稳定性和耐用性。公司拥有自营进出口权，可为国内外用户提供由设计到生产、制作安装整套工艺流程等系列制冷配套项目，能满足客户的各种需要。</p>
+        <p>产品广泛的应用于食品、医疗卫生、冷链物流、船舶冷冻、生物工程、果蔬、水产品、超市、电子、酒店服务业等各行业。在发展的过程中，公司始终本着以人为本，以科技促发展的经营理念，和上海北京多所大学及科研机构联合协作，致力于产品升级、节...</p>
         <router-link to="/about" tag="button">查看更多</router-link>
       </div>
     </div>
@@ -104,7 +107,7 @@ export default {
         autoplay: 5000,
         speed: 1000
       }
-    }
+    };
   },
   props: {
     newList: Array,
@@ -112,18 +115,18 @@ export default {
     projectList: Array
   },
   methods: {
-    lessContent (value) {
-      const content = value.substring(0, 25)
-      return content + '...'
+    lessContent(value) {
+      const content = value.substring(0, 25);
+      return content + "...";
     },
-    goNews(id){
-      this.$router.push('/news/detail?id='+id)
+    goNews(id) {
+      this.$router.push("/news/detail?id=" + id);
     },
-    goProduct(id){
-      this.$router.push('/product/detail?id='+id)
+    goProduct(id) {
+      this.$router.push("/product/detail?id=" + id);
     },
-    goProject(id){
-      this.$router.push('/engineering/detail?id='+id)
+    goProject(id) {
+      this.$router.push("/engineering/detail?id=" + id);
     }
   }
 };
@@ -148,6 +151,7 @@ export default {
       padding .4rem
       border-top 1px solid #ccc
       p
+        text-indent 2em
         color #c3c3c3
         font-size 14px
         line-height 18px

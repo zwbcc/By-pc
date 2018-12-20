@@ -11,14 +11,16 @@ export default {
   },
   data() {
     return {
-      typeList:[],
+      typeList: [],
       itemList: [],
-      index: '0'
-    }
+      index: "0"
+    };
   },
   methods: {
     async getTypeList() {
-      const res = await this.$http.get("/by/user/equipments/getEquipmentsTypeList");
+      const res = await this.$http.get(
+        "/by/user/equipments/getEquipmentsTypeList"
+      );
       if (res.data.code === 0) {
         const id = res.data.object.list[0].id;
         this.typeList = res.data.object.list;
@@ -27,16 +29,19 @@ export default {
       }
     },
     async getItemList(id) {
-      this.index = id
-      const res = await this.$http.get("/by/user/equipments/getEquipmentsList", {
-        params: { id: id }
-      });
+      this.index = id;
+      const res = await this.$http.get(
+        "/by/user/equipments/getEquipmentsList",
+        {
+          params: { id: id }
+        }
+      );
       if (res.data.code === 0) {
-        this.itemList = res.data.object.produces
+        this.itemList = res.data.object.equipmentsList;
       }
     },
-    goDetail(id){
-      this.$router.push('/device/detail?id='+id)
+    goDetail(id) {
+      this.$router.push("/device/detail?id=" + id);
     }
   },
   created() {

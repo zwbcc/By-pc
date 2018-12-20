@@ -11,10 +11,10 @@ export default {
   },
   data() {
     return {
-      typeList:[],
+      typeList: [],
       itemList: [],
-      index: '0'
-    }
+      index: "0"
+    };
   },
   methods: {
     async getTypeList() {
@@ -27,16 +27,16 @@ export default {
       }
     },
     async getItemList(id) {
-      this.index = id
+      this.index = id;
       const res = await this.$http.get("/by/user/produces/getProducesList", {
         params: { id: id }
       });
       if (res.data.code === 0) {
-        this.itemList = res.data.object.produces
+        this.itemList = res.data.object.produces;
       }
     },
-    goDetail(id){
-      this.$router.push('/product/detail?id='+id)
+    goDetail(id) {
+      this.$router.push("/product/detail?id=" + id);
     }
   },
   created() {

@@ -17,21 +17,21 @@ export default {
       newList: [],
       productList: [],
       projectList: []
-    }
+    };
   },
   methods: {
-      async getIndex() {
+    async getIndex() {
       const res = await this.$http.get("/by/index");
       if (res.data.code === 0) {
-        const data = res.data.object
-        this.newList = data.news.splice(0,3)
-        this.productList = data.produces.splice(0,4)
-        this.projectList = data.projects.splice(0,4)
+        const data = res.data.object;
+        this.newList = data.news.splice(0, 3);
+        this.productList = data.produces.splice(0, 4);
+        this.projectList = data.projects.splice(0, 4);
       }
     }
   },
-  created () {
-    this.getIndex()
+  created() {
+    this.getIndex();
   }
 };
 </script>

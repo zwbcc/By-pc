@@ -23,12 +23,15 @@ export default {
         params: { id: id }
       });
       if (res.data.code === 0) {
-        this.itemList = res.data.object.new;
+        this.itemList = res.data.object.project;
         this.recList = res.data.object.list;
       }
+      console.log(res);
     },
     async getNewsType() {
-      const res = await this.$http.get("/by/user/engineers/getEngineersTypeList");
+      const res = await this.$http.get(
+        "/by/user/engineers/getEngineersTypeList"
+      );
       if (res.data.code === 0) {
         this.typeList = res.data.object.list;
       }

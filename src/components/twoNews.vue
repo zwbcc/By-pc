@@ -4,6 +4,9 @@
        <div :class="['item',{active:item.id == index}]" v-for="item in typeList" :key="item.id" @click="getItemList(item)">{{ item.name }}</div>
     </div>
     <div class="bottom">
+      <div v-if="itemList.length == 0">
+          <h2>此类产品为空</h2>
+      </div>
       <div class="item" v-for="item in itemList" :key="item.id" @click="goDetail(item.id)">
         <h2>{{ types | transfType }}</h2>
         <div class="text">
@@ -23,38 +26,38 @@
 export default {
   data() {
     return {
-      types:''
-    }
+      types: ""
+    };
   },
   props: {
-    typeList:Array,
-    itemList:Array,
-    index:{
-      type:[ String,Number]
+    typeList: Array,
+    itemList: Array,
+    index: {
+      type: [String, Number]
     }
   },
   methods: {
-    getItemList(item){
-      this.types = item.name
-      this.$emit('getItemList',item.id)
+    getItemList(item) {
+      this.types = item.name;
+      this.$emit("getItemList", item.id);
     },
     // 过滤内容过长
     lessContent(value) {
       let content = value.substring(0, 30);
       return content + "...";
     },
-    goDetail(id){
-      this.$emit('goDetail',id)
+    goDetail(id) {
+      this.$emit("goDetail", id);
     }
   },
-  filters:{
-    transfType:function(value){
-       return value.substring(0,2) 
+  filters: {
+    transfType: function(value) {
+      return value.substring(0, 2);
     }
   },
-  watch:{
-    'typeList':function(newData){
-      this.types = newData[0].name
+  watch: {
+    typeList: function(newData) {
+      this.types = newData[0].name;
     }
   }
 };

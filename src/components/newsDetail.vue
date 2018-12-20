@@ -11,6 +11,9 @@
      </div>
      <div class="recommend">
        <h2>推荐咨询</h2>
+       <div v-if="recList.length == 0">
+          <h2>此类产品为空</h2>
+       </div>
        <div class="list" v-for="item in recList" :key="item.id" tag="div" @click="goReco(item.id)">
          <img :src="item.picture" alt="">
          <div class="text">
@@ -31,21 +34,20 @@ export default {
     goReco(id) {
       this.$emit("goReco", id);
     },
-    backNews (){
-      let link = this.$route.path.split("/")[1]
-      this.$router.push('/'+link)
+    backNews() {
+      let link = this.$route.path.split("/")[1];
+      this.$router.push("/" + link);
     },
-    lessContent (value) {
-      let content = value.substring(0, 25)
-      return content + '...'
-    },
+    lessContent(value) {
+      let content = value.substring(0, 25);
+      return content + "...";
+    }
   },
   props: {
     itemList: Object,
     recList: Array,
     typeList: Array
-  },
-
+  }
 };
 </script>
 <style lang="stylus" scoped>
