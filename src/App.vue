@@ -45,7 +45,7 @@ export default {
 </script>
 <style lang="stylus">
 .main 
-  padding-bottom 3.52rem
+  margin-bottom 3.52rem
 .footer 
   position fixed
   bottom 0
