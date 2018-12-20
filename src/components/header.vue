@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="header">
-            <img src="../assets/images/arrow-left.png" alt="" class="back" @click="goBack()">
+            <img src="../assets/images/arrow-left.png" alt="" class="back" @click="goBack()" v-if="this.$route.path == '/'?false:true">
             <h2>{{ title }}</h2>
             <img src="../assets/images/Bitmap.png" alt="" class="logo">
         </div>
@@ -9,7 +9,10 @@
 </template>
 <script>
 export default {
-  name: "Header",
+  data() {
+    return {
+    }
+  },
   methods: {
     goBack() {
       this.$router.go(-1);
