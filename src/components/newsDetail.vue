@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="top">
-      <div :class="['item',{active:itemList.types == item.id}] " v-for="item in typeList" :key="item.id" @click="backNews" >{{item.name}}</div>
+      <div :class="['item',{active:itemList.types == item.id}] " v-for="item in typeList" :key="item.id" @click="backNews(link,item.id)" >{{item.name}}</div>
     </div>
     <div class="bottom">
      <div class="item">
@@ -34,9 +34,8 @@ export default {
     goReco(id) {
       this.$emit("goReco", id);
     },
-    backNews() {
-      let link = this.$route.path.split("/")[1];
-      this.$router.push("/" + link);
+    backNews(link,id) {
+      this.$router.push(link+'?id='+id)
     },
     lessContent(value) {
       let content = value.substring(0, 25);
@@ -46,7 +45,8 @@ export default {
   props: {
     itemList: Object,
     recList: Array,
-    typeList: Array
+    typeList: Array,
+    link: String
   }
 };
 </script>

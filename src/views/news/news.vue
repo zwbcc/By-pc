@@ -1,19 +1,21 @@
 <template>
   <div class="container">
-    <div class="top">
-      <div :class="['item',{active:item.id == index}]" v-for="item in typeList" :key="item.id" @click="getList(item.id)">{{ item.name }}</div>
-    </div>
+    <news-cate :typeList="typeList" :index="index" @getList="getList"></news-cate>
     <div class="bottom">
-      <router-link :to="'/news/detail?id='+item.id" class="list" tag="div" v-for="item in itemList" :key="item.id">
+      <div class="list" v-for="item in itemList" :key="item.id" @click="goDetail(item.id)">
         <h3>{{item.title}}</h3>
         <div v-html="lessContent(item.content)" class="detail_content">
         </div>
-      </router-link>
+      </div>
     </div>
   </div>
 </template>
 <script>
+import NewsCate from '../../components/newsCate'
 export default {
+  components: {
+    NewsCate
+  },
   data() {
     return {
       typeList: [],
@@ -25,7 +27,8 @@ export default {
     async getTypeList() {
       const res = await this.$http.get("/by/user/news/getNewsTypeList");
       if (res.data.code === 0) {
-        const id = res.data.object.list[0].id;
+        const id =  this.$route.query.id  || res.data.object.list[0].id;
+        this.$router.push('/news?id='+id)
         this.typeList = res.data.object.list;
         this.index = id;
         this.getItemList(id);
@@ -40,8 +43,12 @@ export default {
       }
     },
     getList(id) {
+      this.$router.push('/news?id='+id)
       this.getItemList(id);
       this.index = id;
+    },
+    goDetail(id){
+      this.$router.push('/news/detail?id='+id)
     },
     // 过滤内容过长
     lessContent(value) {
@@ -55,27 +62,7 @@ export default {
 };
 </script>
 <style lang="stylus" scoped>
-.active 
-  background #00a2e9
-  color #fff
 .container
-  .top 
-    padding .2rem .3rem
-    display flex
-    flex-wrap wrap
-    border-bottom 20px solid #eee
-    .item
-      text-align center
-      margin .2rem 2% 0
-      line-height .6rem
-      font-size 12px
-      width 20%
-      height .6rem
-      border 1px solid #00a2e9
-      overflow hidden
-      white-space nowrap
-      -ms-text-overflow: ellipsis
-      text-overflow: ellipsis
   .bottom
     padding .2rem .3rem
     .list 

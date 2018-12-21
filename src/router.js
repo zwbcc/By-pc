@@ -25,7 +25,7 @@ export default new Router({
     { path: "/", component: Home },
     { path: "/about", component: About },
     { path: "/news", component: News },
-    { path: "/news/detail", component: NewsDetail },
+    { path: "/news/detail/", component: NewsDetail },
     { path: "/contact", component: Contact },
     { path: "/product", component: Product },
     { path: "/product/detail", component: ProductDetail },

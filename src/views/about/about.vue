@@ -149,7 +149,7 @@ export default {
         &:nth-child(2n)
           margin-left .3rem
         img
-          width 100%
+          // width 100%
           height 2.8rem
         h3 
           margin .2rem 

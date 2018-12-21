@@ -1,6 +1,6 @@
 <template>
   <div>
-    <news-deatail :itemList="itemList" :recList="recList" :typeList="typeList" @goReco="goReco"></news-deatail>
+    <news-deatail :itemList="itemList" :recList="recList" :typeList="typeList" @goReco="goReco" :link="link"></news-deatail>
   </div>
 </template>
 <script>
@@ -14,7 +14,8 @@ export default {
       itemList: {},
       recList: [],
       id: "",
-      typeList: []
+      typeList: [],
+      link:'/engineering'
     };
   },
   methods: {
@@ -37,6 +38,7 @@ export default {
       }
     },
     goReco(id) {
+      this.$router.push('/engineering/detail?id='+id)
       this.getNewsDetail(id);
     }
   },

@@ -28,15 +28,17 @@ export default {
         this.swipers = res.data.object.rotationCharts;
       }
     },
-　　_isMobile() {
-      const flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
+    _isMobile() {
+      const flag = navigator.userAgent.match(
+        /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+      );
       return flag;
     }
   },
   created() {
     this.getSwiper();
   },
-   mounted() {
+  mounted() {
     if (!this._isMobile()) {
       //  window.location.href = "http://www.baidu.com"
     }

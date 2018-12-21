@@ -20,6 +20,8 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .container
+  width 100%
+  box-sizing border-box
   padding .4rem .3rem
   display flex
   background #00a2e9
