@@ -33,8 +33,6 @@ export default {
 .wrapper
   overflow:hidden
   width 100%
-  height:0
-  padding-bottom: 36.333%
   background :#ccc
   .swiper-item
     width:100%

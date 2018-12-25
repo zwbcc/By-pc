@@ -22,16 +22,16 @@ export default {
         "/by/user/engineers/getEngineersTypeList"
       );
       if (res.data.code === 0) {
-        const id = this.$route.query.id  ||  res.data.object.list[0].id;
+        const id = this.$route.query.id || res.data.object.list[0].id;
         this.typeList = res.data.object.list;
-        this.$router.push('/engineering?id='+id)
+        this.$router.push("/engineering?id=" + id);
         this.index = id;
         this.getItemList(id);
       }
     },
     async getItemList(id) {
       this.index = id;
-      this.$router.push('/engineering?id='+id)
+      this.$router.push("/engineering?id=" + id);
       const res = await this.$http.get("/by/user/engineers/getEngineersList", {
         params: { id: id }
       });

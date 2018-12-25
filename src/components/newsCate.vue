@@ -8,18 +8,18 @@
 <script>
 export default {
   props: {
-    typeList:Array,
-    index:{
-      type: [String,Number],
+    typeList: Array,
+    index: {
+      type: [String, Number],
       default: 0
     }
   },
   methods: {
-    getList(id){
-      this.$emit('getList',id)
+    getList(id) {
+      this.$emit("getList", id);
     }
   }
-}
+};
 </script>
 <style lang="stylus" scoped>
 .active 
@@ -43,4 +43,3 @@ export default {
     -ms-text-overflow: ellipsis
     text-overflow: ellipsis
 </style>
-

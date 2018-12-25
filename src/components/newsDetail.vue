@@ -34,8 +34,8 @@ export default {
     goReco(id) {
       this.$emit("goReco", id);
     },
-    backNews(link,id) {
-      this.$router.push(link+'?id='+id)
+    backNews(link, id) {
+      this.$router.push(link + "?id=" + id);
     },
     lessContent(value) {
       let content = value.substring(0, 25);

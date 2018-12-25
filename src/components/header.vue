@@ -4,13 +4,21 @@
             <img src="../assets/images/arrow-left.png" alt="" class="back" @click="goBack()" v-if="this.$route.path == '/'?false:true">
             <h2>{{ title }}</h2>
             <img src="../assets/images/Bitmap.png" alt="" class="logo">
+            <div class="select_name" v-if="this.$route.path == '/'?true:false">
+              <select v-model="value">
+                <option value="0" selected>中文</option>
+                <option value="1">English</option>
+              </select>
+            </div>
         </div>
     </div>
 </template>
 <script>
 export default {
   data() {
-    return {};
+    return {
+      value: "0"
+    };
   },
   methods: {
     goBack() {
@@ -19,6 +27,23 @@ export default {
   },
   props: {
     title: String
+  },
+  watch: {
+    value: function(newData) {
+      if (newData == 1) {
+        this.$http
+          .get("/by/changeType", { params: { lang: "en" } })
+          .then(function(data) {
+            console.log(data);
+          });
+      } else {
+        this.$http.get("/by/changeType", { params: { lang: "ch" } }, function(
+          data
+        ) {
+          console.log(data);
+        });
+      }
+    }
   }
 };
 </script>

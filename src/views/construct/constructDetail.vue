@@ -15,7 +15,7 @@ export default {
       recList: [],
       id: "",
       typeList: [],
-      link:'/construct'
+      link: "/construct"
     };
   },
   methods: {
@@ -35,7 +35,7 @@ export default {
       }
     },
     goReco(id) {
-      this.$router.push('/construct/detail?id='+id)
+      this.$router.push("/construct/detail?id=" + id);
       this.getNewsDetail(id);
     }
   },

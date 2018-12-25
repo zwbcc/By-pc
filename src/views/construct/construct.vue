@@ -20,8 +20,8 @@ export default {
     async getTypeList() {
       const res = await this.$http.get("/by/user/projects/getProjectsTypeList");
       if (res.data.code === 0) {
-        const id = this.$route.query.id  || res.data.object.list[0].id;
-        this.$router.push('/construct?id='+id)
+        const id = this.$route.query.id || res.data.object.list[0].id;
+        this.$router.push("/construct?id=" + id);
         this.typeList = res.data.object.list;
         this.index = id;
         this.getItemList(id);
@@ -29,7 +29,7 @@ export default {
     },
     async getItemList(id) {
       this.index = id;
-      this.$router.push('/construct?id='+id)
+      this.$router.push("/construct?id=" + id);
       const res = await this.$http.get("/by/user/projects/getProjectsList", {
         params: { id: id }
       });

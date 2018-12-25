@@ -15,7 +15,7 @@ export default {
       recList: [],
       id: "",
       typeList: [],
-      link:'/engineering'
+      link: "/engineering"
     };
   },
   methods: {
@@ -38,7 +38,7 @@ export default {
       }
     },
     goReco(id) {
-      this.$router.push('/engineering/detail?id='+id)
+      this.$router.push("/engineering/detail?id=" + id);
       this.getNewsDetail(id);
     }
   },

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-     <div class="top">
+     <!-- <div class="top">
        <div class="item">
          <img src="../assets/images/prodetail1.png" alt="">
          <div class="text">
@@ -19,7 +19,7 @@
            <p>气氛嘛来嘛弗拉门戈‘评价我拼命’说了父母商量了忘记发票</p>
          </div>
        </div>
-    </div>
+    </div> -->
     <div class="bottom">
       <div class="image">
         <h2>实拍产品</h2>

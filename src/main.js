@@ -2,7 +2,6 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-// import "./viewport";
 import vueAwesomeSwiper from "vue-awesome-swiper";
 import axios from "axios";
 import moment from "moment";

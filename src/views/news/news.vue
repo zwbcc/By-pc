@@ -11,7 +11,7 @@
   </div>
 </template>
 <script>
-import NewsCate from '../../components/newsCate'
+import NewsCate from "../../components/newsCate";
 export default {
   components: {
     NewsCate
@@ -27,8 +27,8 @@ export default {
     async getTypeList() {
       const res = await this.$http.get("/by/user/news/getNewsTypeList");
       if (res.data.code === 0) {
-        const id =  this.$route.query.id  || res.data.object.list[0].id;
-        this.$router.push('/news?id='+id)
+        const id = this.$route.query.id || res.data.object.list[0].id;
+        this.$router.push("/news?id=" + id);
         this.typeList = res.data.object.list;
         this.index = id;
         this.getItemList(id);
@@ -43,12 +43,12 @@ export default {
       }
     },
     getList(id) {
-      this.$router.push('/news?id='+id)
+      this.$router.push("/news?id=" + id);
       this.getItemList(id);
       this.index = id;
     },
-    goDetail(id){
-      this.$router.push('/news/detail?id='+id)
+    goDetail(id) {
+      this.$router.push("/news/detail?id=" + id);
     },
     // 过滤内容过长
     lessContent(value) {
