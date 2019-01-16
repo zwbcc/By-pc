@@ -1,0 +1,31 @@
+﻿/******基础样式开始******/
+body{font-family:Microsoft Yahei,Arial, Helvetica, sans-serif;font-size:12px;color:#333; background:#fff;text-align:justify;text-justify:inter-ideograph;background-image:url(about:blank);background-attachment:fixed; height:100%;}
+table,td{font-family:Microsoft Yahei,Arial, Helvetica, sans-serif;font-size:12px;line-height:24px;color:#2e2e2e;}
+html,body,div,span,p,h1,h2,h3,h4,h5,h6,em,img,strong,blockquote,sub,sup,tt,i,b,dd,dl,dt,form,label,table,caption,tbody, tfoot, thead,tr,th,td,ul,li,p,a,ol{margin:0;padding:0;}
+s,i,em{ font-style:normal; text-decoration:none;}
+ul,ol,li{list-style-type:none;list-style:none;}
+button,input,select,textarea{vertical-align:middle; font-family:Microsoft Yahei; margin:0; padding:0;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+address,cite,dfn,em,var{font-style:normal;}
+code,kbd,pre,samp{font-family:courier new,courier,monospace;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+legend{color:#000;}
+fieldset,img{border:0;}
+button,input,select,textarea{font-size:100%;}
+table{border-collapse:collapse;border-spacing:0;}
+a{color:#6e6e6e; text-decoration:none;}
+.white,.white a{color:#fff;text-decoration:none;}
+.white,a:hover{color:#027eba;}
+.clearfix{clear:both;height:1px;margin-top:-1px;overflow:hidden;}
+
+
+
+
+
+
+
+
+
+
+
